@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  ai-consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # container_name: ai-consumer
+    restart: always
+    expose:
+      - "5551"
+    ports:
+      - "5551" # Optional: publish only one of the replicas
+    
+    deploy:
+      mode: replicated
+      replicas: 5
+    environment:
+      - UVICORN_WORKERS=1
+      - UVICORN_TIMEOUT=60
+      - UVICORN_LIMIT_CONCURRENCY=50
+    # command: ["python", "consumer.py"]
