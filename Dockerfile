@@ -32,7 +32,7 @@ ENV PATH=/root/.local/bin:$PATH \
 
 
 
-EXPOSE 5551
+EXPOSE 8080
 
 
 CMD ["python","main.py"]
